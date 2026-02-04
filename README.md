@@ -8,8 +8,6 @@
 
 ## 🎯 Analytics Showcase
 
-## 🎯 Analytics Showcase
-
 This dashboard delivers **production-ready trading analytics** with all **14+ requested features fully implemented** and tested against realistic Deriverse trading scenarios.
 
 ### Data Architecture
@@ -172,17 +170,6 @@ The dashboard showcases a **realistic trading journey** designed to demonstrate 
 - Positive trend
 - Demonstrates mature risk management
 
-### Integration Architecture
-
-Production-ready server-side API design:
-
-- ✅ `/api/deriverse/trades` - Trade data endpoint
-- ✅ Spot & perpetual position support
-- ✅ Comprehensive error handling
-- ✅ Modular design for easy data source swapping
-
-Technical implementation details in [TROUBLESHOOTING.md](./DERIVERSE_SDK_TROUBLESHOOTING.md).
-
 ### 🧬 Technical Notes: SDK Diagnosis
 
 We performed a low-level on-chain inspection to identify the exact cause of SDK incompatibility:
@@ -205,8 +192,8 @@ See [DERIVERSE_SDK_TROUBLESHOOTING.md](./DERIVERSE_SDK_TROUBLESHOOTING.md) for t
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/yourusername/deriverse-analytics.git
-   cd deriverse-analytics
+   git clone https://github.com/Nihal-Pandey-2302/Deriverse-TA-Dashboard.git
+   cd Deriverse-TA-Dashboard
    ```
 
 2. **Install dependencies**
