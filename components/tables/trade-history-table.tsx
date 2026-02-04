@@ -175,7 +175,7 @@ export function TradeHistoryTable({ className }: TradeHistoryTableProps) {
                     <TableCell className="text-right">
                       <div className="flex flex-col">
                         <span>in: {formatCurrency(trade.entryPrice)}</span>
-                        <span className="text-xs text-muted-foreground">out: {formatCurrency(trade.exitPrice)}</span>
+                        <span className="text-xs text-muted-foreground">out: {trade.exitPrice !== null ? formatCurrency(trade.exitPrice) : '-'}</span>
                       </div>
                     </TableCell>
                     <TableCell className={`text-right font-medium ${trade.pnl >= 0 ? 'text-profit' : 'text-loss'}`}>
