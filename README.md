@@ -2,8 +2,6 @@
 
 > **Winner-Ready Analytics Dashboard for the Deriverse Ecosystem**
 >
-> 🔗 **[Live Demo](https://deriverse-analytics-demo.vercel.app)** | 📊 **[GitHub](https://github.com/yourusername/deriverse-analytics)**
->
 > A high-performance, real-time trading dashboard built for the Solana Deriverse protocol. Features advanced PnL tracking, interactive charts, and global market insights.
 
 ## 🎯 Analytics Showcase
