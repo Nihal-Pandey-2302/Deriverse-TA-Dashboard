@@ -25,7 +25,7 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 
 export function DashboardControls() {
-  const { filters, setSymbolFilter, setDateRangeFilter, allTrades, isMock, viewMode, setViewMode, setUseMockData } = useTradesContext();
+  const { filters, setSymbolFilter, setDateRangeFilter, allTrades, isMock, viewMode, setViewMode, setUseMockData, useMockData } = useTradesContext();
 
   // Extract unique symbols from all trades for dynamic filter options
   const symbols = ['All', ...Array.from(new Set(allTrades.map(t => t.symbol))).sort()];
@@ -64,16 +64,24 @@ export function DashboardControls() {
       </div>
 
       {/* Mock Data Toggle */}
-      <div className="flex items-center space-x-2 bg-muted/50 p-1.5 rounded-lg border border-border">
-         <Switch 
-            id="mock-mode" 
-            checked={isMock} 
-            onCheckedChange={setUseMockData}
-            className="data-[state=checked]:bg-yellow-500"
-         />
-         <Label htmlFor="mock-mode" className="text-xs font-medium cursor-pointer">
-           Mock Data
-         </Label>
+      <div className="flex flex-col items-end">
+        <div className="flex items-center space-x-2 bg-muted/50 p-1.5 rounded-lg border border-border">
+           <Switch 
+              id="mock-mode" 
+              checked={useMockData} 
+              onCheckedChange={setUseMockData}
+              className="data-[state=checked]:bg-yellow-500"
+           />
+           <Label htmlFor="mock-mode" className="text-xs font-medium cursor-pointer">
+             {useMockData ? "Mock Mode" : "Live Mode"}
+           </Label>
+        </div>
+        {/* Fallback Warning: User wants Live, but System forced Mock */}
+        {!useMockData && isMock && (
+            <span className="text-[10px] text-orange-500 font-medium mr-1 mt-1 animate-pulse">
+                Unavailable - Using Fallback
+            </span>
+        )}
       </div>
 
       <div className="h-4 w-px bg-border mx-2 hidden sm:block" />

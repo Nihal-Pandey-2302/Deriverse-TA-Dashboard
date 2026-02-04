@@ -26,6 +26,7 @@ interface TradesContextType {
   setDateRangeFilter: (range: DateRange | undefined) => void;
   setViewMode: (mode: ViewMode) => void;
   setUseMockData: (useMock: boolean) => void; // New toggle
+  useMockData: boolean; // User preference
   refreshTrades: () => Promise<void>;
 }
 
@@ -133,6 +134,7 @@ export function TradesProvider({ children }: { children: React.ReactNode }) {
       setDateRangeFilter,
       setViewMode,
       setUseMockData,
+      useMockData,
       refreshTrades: loadTrades 
     }}>
       {children}

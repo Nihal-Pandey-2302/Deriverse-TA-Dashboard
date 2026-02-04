@@ -7,7 +7,8 @@ import {
   History, 
   LayoutDashboard, 
   Settings, 
-  LineChart 
+  LineChart,
+  FileText
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -38,6 +39,12 @@ export function Sidebar() {
       icon: CreditCard,
       href: '/wallet',
       active: pathname === '/wallet',
+    },
+    {
+      label: 'Docs',
+      icon: FileText,
+      href: '/docs',
+      active: pathname === '/docs',
     },
     {
       label: 'Settings',
