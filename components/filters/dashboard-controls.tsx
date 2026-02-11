@@ -78,9 +78,14 @@ export function DashboardControls() {
         </div>
         {/* Fallback Warning: User wants Live, but System forced Mock */}
         {!useMockData && isMock && (
-            <span className="text-[10px] text-orange-500 font-medium mr-1 mt-1 animate-pulse">
-                Unavailable - Using Fallback
-            </span>
+            <div className="flex flex-col items-end mt-1">
+                <span className="text-[10px] text-yellow-500 font-medium animate-pulse">
+                    ⚠️ Waiting for access...
+                </span>
+                <span className="text-[9px] text-muted-foreground">
+                    (Auto-retrying every 30s)
+                </span>
+            </div>
         )}
       </div>
 

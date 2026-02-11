@@ -18,6 +18,22 @@ export function WinRateMetric({ className }: WinRateMetricProps) {
     return <Skeleton className="h-[140px] w-full rounded-xl" />;
   }
 
+  if (trades.length === 0) {
+      return (
+        <Card className={className}>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">
+                Win Rate
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+                <div className="text-sm text-muted-foreground">No trades yet</div>
+                <p className="text-xs text-muted-foreground mt-1">Start trading to see stats</p>
+            </CardContent>
+        </Card>
+      );
+  }
+
   const data = [
     { name: 'Wins', value: stats.winRate },
     { name: 'Losses', value: 100 - stats.winRate },

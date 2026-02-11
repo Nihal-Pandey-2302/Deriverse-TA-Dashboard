@@ -96,6 +96,19 @@ export function TradesProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     loadTrades();
+
+    // Specific Polling for Live Data Waiting
+    let interval: NodeJS.Timeout;
+    if (viewMode === 'personal' && !useMockData) {
+        interval = setInterval(() => {
+            console.log("Polling for live data...");
+            loadTrades();
+        }, 30000); // Poll every 30s
+    }
+
+    return () => {
+        if (interval) clearInterval(interval);
+    };
   }, [publicKey, viewMode, useMockData]); // Added useMockData dependency
 
   // Derived state: Filtered Trades
