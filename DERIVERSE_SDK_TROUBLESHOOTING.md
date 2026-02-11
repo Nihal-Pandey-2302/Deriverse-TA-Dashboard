@@ -1,18 +1,20 @@
-# Deriverse SDK Integration - Technical Diagnosis
+## Current Status: ✅ SDK Issue Resolved
 
-## Status: SDK Initialization Error
+The dashboard is fully configured to use the correct Deriverse Devnet Program ID (`CDES...`) and Version (`6`).
 
-The dashboard is currently operating in **Hybrid Mode** (Mock Data fallback) because the `@deriverse/kit` SDK cannot properly initialize with the current Devnet program state.
+**Note**: To fetch real trade data, your wallet must be **whitelisted** on the Deriverse Devnet. Please follow the instructions in the Deriverse Discord if you see 0 balances.
 
 ---
 
-## The Problem
+## The Solution
 
-**Error**: `RangeError: The value of "offset" is out of range. It must be >= 0 and <= 336. Received 344`
+**Root Cause**: The SDK defaults to an older Program ID and Version (`12`). The current Devnet deployment uses a different ID and Version (`6`).
 
-**Context**: This error occurs during `engine.initialize()` when the SDK attempts to parse the root account data from the Solana RPC.
+**Fix Applied**:
 
-**Impact**: Real-time position fetching is disabled. The application gracefully degrades to use realistic test data.
+1. Updated `NEXT_PUBLIC_DERIVERSE_PROGRAM_ID` to `CDESjex4EDBKLwx9ZPzVbjiHEHatasb5fhSJZMzNfvw2`.
+2. Updated SDK initialization to use `version: 6`.
+3. Validated initialization with script `scripts/verify-sdk-version.ts`.
 
 ---
 

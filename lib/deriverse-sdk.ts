@@ -7,28 +7,12 @@ import { OrderType } from '@deriverse/kit/dist/structure_models';
 let engine: Engine | null = null;
 
 export const DERIVERSE_PROGRAM_ID = new PublicKey(
-  process.env.NEXT_PUBLIC_DERIVERSE_PROGRAM_ID || 'Drvrseg8AQLP8B96DBGmHRjFGviFNYTkHueY9g3k27Gu'
+  process.env.NEXT_PUBLIC_DERIVERSE_PROGRAM_ID || 'CDESjex4EDBKLwx9ZPzVbjiHEHatasb5fhSJZMzNfvw2'
 );
 
 // Helper to convert Experimental SDK Instruction to Legacy Web3 Instruction
 function convertInstruction(validIx: any): TransactionInstruction {
     const keys: AccountMeta[] = validIx.accounts.map((acc: any) => {
-        // Heuristic for AccountRole mapping based on common new-web3 usage and observation:
-        // 0: Readonly
-        // 1: Writable
-        // 2: Signer (Writable?) - In debug log, user was 2. User needs to be writable to pay.
-        // 3: Signer (Readonly?)
-        // Let's assume:
-        // isSigner: role >= 2
-        // isWritable: role === 1 || role === 2 || role === 3 (Safest to default writable if signer, unless specific readonly signer)
-        
-        // Actually, let's map strictly if we can confirm. 
-        // If not, we map:
-        // 0 -> { isSigner: false, isWritable: false }
-        // 1 -> { isSigner: false, isWritable: true }
-        // 2 -> { isSigner: true, isWritable: true } (Assuming main signer is writable)
-        // 3 -> { isSigner: true, isWritable: true } 
-        
         const isSigner = acc.role >= 2;
         const isWritable = acc.role === 1 || acc.role === 2 || acc.role === 3;
         
@@ -59,10 +43,10 @@ export async function getDeriverseEngine(connection: Connection): Promise<Engine
     connection.rpcEndpoint.replace('https://', 'wss://').replace('http://', 'ws://')
   );
   
-  // IMPORTANT: Version must be 12 for the current Devnet deployment
+  // IMPORTANT: Version must be 6 for the current Devnet deployment (Updated per Deriverse Team)
   engine = new Engine(rpc, { 
     programId: address(DERIVERSE_PROGRAM_ID.toBase58()),
-    version: 12 
+    version: 6 
   });
   
   // Initialize the engine (fetches markets, tokens, etc.)

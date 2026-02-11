@@ -19,7 +19,7 @@ This dashboard delivers **production-ready trading analytics** with all **14+ re
 - ✅ **Various order types** (market, limit)
 - ✅ **Realistic fee structures** matching Deriverse economics
 
-**Production Integration Ready**: Server-side API architecture is complete and tested. Live Deriverse data integration requires SDK version alignment (see [Technical Notes](./DERIVERSE_SDK_TROUBLESHOOTING.md)).
+**Production Integration Ready**: Server-side API architecture is complete. Live Deriverse data fetching is enabled (requires **Whitelisted Wallet** on Devnet). See [Technical Notes](./DERIVERSE_SDK_TROUBLESHOOTING.md) for details.
 
 ---
 
@@ -215,9 +215,8 @@ See [DERIVERSE_SDK_TROUBLESHOOTING.md](./DERIVERSE_SDK_TROUBLESHOOTING.md) for t
 
 ### 🔮 Future Roadmap
 
-- **Live Data Finalization**: Estimated **1-2 hours** once the correct SDK version is available.
-  - The server-side architecture is already tested and ready.
-  - Required Step: Update `@deriverse/kit` to version matching the 344-byte account structure.
+- **Live Data**: **ENABLED** (Requires Devnet Whitelist).
+  - Use the Settings page to toggle between Mock and Live modes.
 - **Mobile Push Notifications**: For trade execution alerts.
 - **Multi-Wallet Support**: Ledger/Hardware wallet integration.
 
